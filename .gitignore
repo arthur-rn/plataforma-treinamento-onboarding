@@ -1,0 +1,19 @@
+# Ambiente Virtual
+venv/
+env/
+.env
+
+# Python / Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Banco de dados local (desenvolvimento)
+*.sqlite3
+
+# Mídia enviada por usuários no teste local
+/media/
+
+# IDEs
+.vscode/
+.idea/
