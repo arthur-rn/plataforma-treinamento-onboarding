@@ -12,7 +12,7 @@ class Cargo(models.Model):
     class Meta:
         verbose_name = 'Cargo'
         verbose_name_plural = 'Cargos'
-        unique_together = ['empresa', 'nome']  #Não permite dois cargos com o mesmo nome na mesma empresa
+        unique_together = ['empresa', 'nome']  # Não permite dois cargos com o mesmo nome na mesma empresa
         ordering = ['nome']
 
     def __str__(self):
@@ -25,10 +25,10 @@ class CustomUser(AbstractUser):
         GESTOR = 'GESTOR', 'Gestor da Empresa'
         COLABORADOR = 'COLABORADOR', 'Novo Colaborador (Aluno)'
 
-    #Login será realizado por email
+    # Login será realizado por email
     email = models.EmailField('E-mail', unique=True)
     
-    #Relação com a Empresa e o Cargo
+    # Relação com a Empresa e o Cargo
     empresa = models.ForeignKey(
         Empresa, 
         on_delete=models.CASCADE, 
@@ -53,7 +53,7 @@ class CustomUser(AbstractUser):
     )
     telefone = models.CharField('Telefone / WhatsApp', max_length=20, blank=True)
 
-    #Configuração para autenticação por e-mail:
+    # Configuração para autenticação por e-mail:
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 

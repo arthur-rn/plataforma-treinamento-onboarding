@@ -56,43 +56,43 @@ Desenvolver uma plataforma web de onboarding e treinamento corporativo **multi-t
 * **Quero** inicializar o projeto Django com separação modular em apps (`core`, `empresas`, `usuarios`),
 * **Para que** a arquitetura seja escalável e de fácil manutenção.
 * **Critérios de Aceite:**
-  - [ ] Projeto Django criado com configurações separadas (desenvolvimento/produção).
-  - [ ] Apps `empresas`, `usuarios` e `core` registrados no `INSTALLED_APPS`.
-  - [ ] Banco de dados SQLite inicializado localmente.
+  - [X] Projeto Django criado com configurações separadas (desenvolvimento/produção).
+  - [X] Apps `empresas`, `usuarios` e `core` registrados no `INSTALLED_APPS`.
+  - [X] Banco de dados SQLite inicializado localmente.
 
 #### **US-02: Modelo de Empresa (Tenant Base)**
 * **Como** administrador da plataforma,
 * **Quero** cadastrar empresas com dados cadastrais e slug único,
 * **Para que** diferentes empresas possam usar o mesmo sistema de forma isolada.
 * **Critérios de Aceite:**
-  - [ ] Modelo `Empresa` criado com `nome`, `slug` único, `cnpj` (opcional), `criado_em` e `ativo`.
-  - [ ] O `slug` deve ser gerado automaticamente a partir do nome se não informado.
+  - [X] Modelo `Empresa` criado com `nome`, `slug` único, `cnpj` (opcional), `criado_em` e `ativo`.
+  - [X] O `slug` deve ser gerado automaticamente a partir do nome se não informado.
 
 #### **US-03: Modelo Customizado de Usuário e Cargos**
 * **Como** gestor da empresa,
 * **Quero** cadastrar cargos e vincular novos colaboradores à minha empresa e ao cargo deles,
 * **Para que** os treinamentos futuros sejam direcionados automaticamente.
 * **Critérios de Aceite:**
-  - [ ] Modelo `Cargo` vinculado a uma `Empresa`.
-  - [ ] `CustomUser` estendendo `AbstractUser` do Django, com campos `email` (único para login), `empresa` (ForeignKey) e `cargo` (ForeignKey).
-  - [ ] Papéis de usuário definidos: `ADMIN_EMPRESA` e `COLABORADOR`.
+  - [X] Modelo `Cargo` vinculado a uma `Empresa`.
+  - [X] `CustomUser` estendendo `AbstractUser` do Django, com campos `email` (único para login), `empresa` (ForeignKey) e `cargo` (ForeignKey).
+  - [X] Papéis de usuário definidos: `ADMIN_EMPRESA` e `COLABORADOR`.
 
 #### **US-04: Django Admin com Suporte a Multi-empresa**
 * **Como** gestor ou administrador,
 * **Quero** acessar o Django Admin para gerenciar os cadastros iniciais,
 * **Para que** possamos cadastrar a primeira empresa, cargos e usuários de teste.
 * **Critérios de Aceite:**
-  - [ ] Modelos registrados no `admin.py` com listagens claras e filtros.
-  - [ ] Criação de um superuser local para testes.
+  - [X] Modelos registrados no `admin.py` com listagens claras e filtros.
+  - [X] Criação de um superuser local para testes.
 
 #### **US-05: Fluxo de Autenticação (Login / Logout)**
 * **Como** colaborador ou gestor,
 * **Quero** fazer login utilizando meu e-mail e senha,
 * **Para que** eu seja direcionado para a área correspondente do sistema.
 * **Critérios de Aceite:**
-  - [ ] Tela de login funcional via e-mail e senha.
-  - [ ] Mensagens de erro claras para credenciais inválidas.
-  - [ ] Redirecionamento após login e rota de logout funcional.
+  - [X] Tela de login funcional via e-mail e senha.
+  - [X] Mensagens de erro claras para credenciais inválidas.
+  - [X] Redirecionamento após login e rota de logout funcional.
 
 ---
 

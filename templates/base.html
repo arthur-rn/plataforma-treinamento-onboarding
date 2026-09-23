@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ empresa.nome|default:"Plataforma de Treinamento" }}{% endblock %}</title>
+
+    <!-- Tailwind CSS (via CDN para máxima agilidade e sem precisar de Node.js agora) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Cores Dinâmicas da Empresa (White-Label) -->
+    <style>
+        :root {
+            --cor-primaria: {{ empresa.cor_primaria|default:"#2563EB" }};
+            --cor-secundaria: {{ empresa.cor_secundaria|default:"#1E40AF" }};
+        }
+        .bg-empresa-primaria {
+            background-color: var(--cor-primaria) !important;
+        }
+        .text-empresa-primaria {
+            color: var(--cor-primaria) !important;
+        }
+        .border-empresa-primaria {
+            border-color: var(--cor-primaria) !important;
+        }
+        .hover-bg-empresa-primaria:hover {
+            filter: brightness(0.9);
+        }
+    </style>
+</head>
+<body class="h-full font-sans antialiased text-slate-800 flex flex-col">
+
+    <!-- Mensagens de Sucesso / Erro do Django -->
+    {% if messages %}
+    <div class="fixed top-4 right-4 z-50 space-y-2 max-w-md">
+        {% for message in messages %}
+        <div class="p-4 rounded-lg shadow-lg text-sm flex items-center gap-3 
+            {% if message.tags == 'error' %}bg-rose-50 text-rose-700 border border-rose-200
+            {% else %}bg-emerald-50 text-emerald-700 border border-emerald-200{% endif %}">
+            <span>{{ message }}</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Conteúdo Específico de Cada Tela -->
+    <main class="flex-1 flex flex-col">
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

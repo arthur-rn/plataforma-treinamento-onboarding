@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - {{ empresa.nome }}{% endblock %}
+
+{% block content %}
+<div class="min-h-full flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl border border-slate-100 p-8 space-y-6">
+        
+        <!-- Cabeçalho com Logo ou Nome da Empresa -->
+        <div class="text-center space-y-2">
+            {% if empresa.logo %}
+                <img src="{{ empresa.logo.url }}" alt="{{ empresa.nome }}" class="h-16 max-w-[220px] object-contain mx-auto mb-4">
+            {% else %}
+                <div class="w-14 h-14 rounded-2xl bg-empresa-primaria text-white flex items-center justify-center text-2xl font-bold mx-auto shadow-md">
+                    {{ empresa.nome|slice:":1"|upper }}
+                </div>
+            {% endif %}
+            
+            <h1 class="text-2xl font-bold text-slate-800">{{ empresa.nome }}</h1>
+            <p class="text-sm text-slate-500">Plataforma de Treinamento e Onboarding</p>
+        </div>
+
+        <!-- Formulário de Login -->
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+
+            <div>
+                <label for="{{ form.email.id_for_label }}" class="block text-sm font-semibold text-slate-700 mb-1.5">E-mail Corporativo</label>
+                {{ form.email }}
+            </div>
+
+            <div>
+                <label for="{{ form.password.id_for_label }}" class="block text-sm font-semibold text-slate-700 mb-1.5">Senha</label>
+                {{ form.password }}
+            </div>
+
+            <button type="submit" 
+                    class="w-full py-3 px-4 rounded-xl text-white font-semibold bg-empresa-primaria hover-bg-empresa-primaria transition shadow-md flex items-center justify-center gap-2 cursor-pointer mt-2">
+                <span>Entrar no Treinamento</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+            </button>
+        </form>
+
+        <div class="pt-4 border-t border-slate-100 text-center">
+            <p class="text-xs text-slate-400">Primeiro acesso? Solicite suas credenciais ao seu gestor ou RH.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
