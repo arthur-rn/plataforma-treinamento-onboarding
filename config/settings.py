@@ -109,7 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'America_Sao_Paulo'
+TIME_ZONE = 'America/Sao_Paulo'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 USE_I18N = True
 
@@ -130,3 +132,11 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+# Definir o modelo de usuário customizado
+AUTH_USER_MODEL = 'usuarios.CustomUser'
+
+# Configuração para arquivos de mídia (uploads de logos e PDFs)
+import os
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
